@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mwindow.cpp
+        mwindow.cpp \
+    campo.cpp
 
-HEADERS  += mwindow.h
+HEADERS  += mwindow.h \
+    campo.h
 
 FORMS    += mwindow.ui

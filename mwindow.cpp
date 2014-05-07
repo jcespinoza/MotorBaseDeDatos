@@ -1,5 +1,6 @@
 #include "mwindow.h"
 #include "ui_mwindow.h"
+#include <QDebug>
 
 MWindow::MWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,4 +12,9 @@ MWindow::MWindow(QWidget *parent) :
 MWindow::~MWindow()
 {
     delete ui;
+}
+
+void MWindow::on_lbNuevaTabla_linkActivated(const QString &link)
+{
+    qDebug() << "Algo";
 }

@@ -48,7 +48,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="lbNuevaTabla">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -73,8 +73,11 @@
       <property name="text">
        <string>Nueva Tabla...</string>
       </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
      </widget>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="lbAbrirFila">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -100,9 +103,25 @@
        <string>Abrir Tabla...</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>270</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pgAdicionCampos">
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="twCampos">
       <property name="geometry">
        <rect>
         <x>370</x>
@@ -127,7 +146,7 @@
        </property>
       </column>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pbAgregarCampo">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -166,7 +185,7 @@
        <string>Longitud</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="cboTipoCampo">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -186,7 +205,7 @@
        </property>
       </item>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="leLongitudCampo">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -209,7 +228,7 @@
        <string>Nombre</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="leNombreCampo">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -221,7 +240,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="pgAdicionRegistros">
-     <widget class="QTableWidget" name="tableWidget_2">
+     <widget class="QTableWidget" name="twDatosTabla">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -231,7 +250,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="pbAgregarFila">
       <property name="geometry">
        <rect>
         <x>4</x>

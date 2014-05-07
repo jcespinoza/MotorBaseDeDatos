@@ -15,6 +15,9 @@ public:
     explicit MWindow(QWidget *parent = 0);
     ~MWindow();
 
+private slots:
+    void on_lbNuevaTabla_linkActivated(const QString &link);
+
 private:
     Ui::MWindow *ui;
 };
