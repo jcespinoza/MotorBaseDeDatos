@@ -1,17 +1,16 @@
 #ifndef CAMPO_H
 #define CAMPO_H
 
-class Campo
+class DefCampo
 {
 public:
-    Campo();
+    DefCampo();
 
     int Tipo;
     int Longitud;
     char Nombre[50];
 
-    void convertirABytes(char*);
-    //static Campo desdeBytes(char*);
+    char[58]
 };
 
 #endif // CAMPO_H
