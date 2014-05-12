@@ -1,8 +1,6 @@
 #include "mwindow.h"
-#include <iostream>
-#include <string>
 #include "defcampo.h"
-#include <QApplication>
+#include <iostream>
 
 using namespace std;
 
@@ -10,9 +8,20 @@ int main(int argc, char *argv[])
 {
     //HCER UN TABLA
     DefCampo def1;
-    def1.Tipo = 0;
+    def1.Tipo = 1;
     def1.Longitud = 36;
     string n = "direccion";
     strcpy(def1.Nombre,n.c_str());
-    cout << def1.Nombre;
+
+    char* tes = new char[58];
+    def1.aByteArray(tes);
+
+    cout << "\n\n\n";
+    Campo c1(def1.Tipo, def1.Longitud);
+    string dir = "La celeo";
+    strcpy(c1.data, dir.c_str());
+
+    char* tes2 = new char[c1.total()];
+    c1.aBytes(tes2);
+
 }
