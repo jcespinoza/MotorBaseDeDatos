@@ -2,6 +2,7 @@
 #define CAMPO_H
 #include <cstdio>
 #include <cstring>
+#include <iostream>
 
 class DefCampo
 {
@@ -12,10 +13,11 @@ public:
     int Longitud;
     char Nombre[50];
 
-    void aByteArray(char* dest){
+    void aBytes(char* dest){
         memcpy(&dest[0], &Tipo, 4);
         memcpy(&(dest[4]), &Longitud, 4);
         memcpy(&dest[8], &Nombre, 50);
+        std::cout << dest;
     }
 };
 

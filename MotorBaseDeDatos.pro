@@ -14,9 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mwindow.cpp \
-    defcampo.cpp
+    defcampo.cpp \
+    deftabla.cpp
 
 HEADERS  += mwindow.h \
-    defcampo.h
+    defcampo.h \
+    deftabla.h
 
 FORMS    += mwindow.ui
