@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>MWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">on-hover{
+	color: blue;
+}</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
@@ -48,75 +53,52 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="lbNuevaTabla">
+     <widget class="QPushButton" name="pbNuevaTabla">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>190</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">pressed{
-	color:blue;
-}</string>
-      </property>
-      <property name="text">
-       <string>Nueva Tabla...</string>
-      </property>
-      <property name="openExternalLinks">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lbAbrirFila">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>230</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">pressed{
-	color:blue;
-}</string>
-      </property>
-      <property name="text">
-       <string>Abrir Tabla...</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>160</x>
-        <y>270</y>
+        <x>310</x>
+        <y>160</y>
         <width>151</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Nueva Tabla...</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbAbrirTabla">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>200</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <italic>true</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Abrir Tabla...</string>
       </property>
      </widget>
     </widget>

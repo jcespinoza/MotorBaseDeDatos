@@ -6,15 +6,20 @@
 #include <QApplication>
 using namespace std;
 
+void testFunction();
+
 int main(int argc, char *argv[])
 {
-    /**
+
     QApplication a(argc, argv);
-    MainWindow w;
+    MWindow w;
     w.show();
 
     return a.exec();
-    **/
+
+}
+
+void testFunction(){
     //HCER UN TABLA
     DefCampo def1;
     def1.Tipo = 1;
@@ -49,13 +54,30 @@ int main(int argc, char *argv[])
     int tsize = det1.totalTamanio();
     char* tab = new char[tsize];
     det1.aBytes(tab);
-    cout << tab << " s " << tab[tsize];
 
     FILE * tFile;
-      tFile = fopen ("prueba.sexy","wb");
-      if (tFile!=NULL)
-      {
+    tFile = fopen ("prueba.sexy","wb");
+    if (tFile!=NULL)
+    {
         fwrite(tab,1, tsize,tFile);
         fclose(tFile);
-      }
+    }
+
+    //Now read the file.
+    FILE* rFile;
+    char* tread = new char[tsize];
+    rFile = fopen ("prueba.sexy","rb");
+    if(rFile)
+    {
+        long lsize = 0;
+        fseek(rFile,0,SEEK_END);
+        lsize = ftell(rFile);
+        rewind(rFile);
+        fread(tread, 1, tsize, rFile);
+        fclose(rFile);
+        DefTabla rDef = DefTabla::desdeBytes(tread);
+        //cout << (*DefCampo)(rDef.defCampos.begin()).Nombre;
+        std::list<DefCampo>::iterator it = rDef.defCampos.begin();
+        cout << ((*(++it))).Nombre;
+    }
 }

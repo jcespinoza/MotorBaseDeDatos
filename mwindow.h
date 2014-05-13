@@ -16,7 +16,8 @@ public:
     ~MWindow();
 
 private slots:
-    void on_lbNuevaTabla_linkActivated(const QString &link);
+    void on_pbNuevaTabla_clicked();
+    void on_pbAbrirTabla_clicked();
 
 private:
     Ui::MWindow *ui;

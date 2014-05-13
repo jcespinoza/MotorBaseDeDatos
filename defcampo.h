@@ -17,7 +17,14 @@ public:
         memcpy(&dest[0], &Tipo, 4);
         memcpy(&(dest[4]), &Longitud, 4);
         memcpy(&dest[8], &Nombre, 50);
-        std::cout << dest;
+    }
+
+    static DefCampo desdeBytes(char* fuente){
+        DefCampo res;
+        memcpy(&(res.Tipo),&fuente[0], 4);
+        memcpy(&(res.Longitud),&(fuente[4]), 4);
+        memcpy(res.Nombre,&(fuente[8]), 50);
+        return res;
     }
 };
 
