@@ -2,11 +2,11 @@
 #include <string>
 #include <iostream>
 #include <cstdio>
-#include "deftabla.h"
 #include <QApplication>
 using namespace std;
 
 void testFunction();
+void testControlador();
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +16,16 @@ int main(int argc, char *argv[])
     w.show();
 
     return a.exec();
+}
 
+void testControlador(){
+    Controlador contr;
+    DefTabla det1;
+    string nom = "Holis";
+    strcpy(det1.nombre,nom.c_str());
+
+    contr.tablas.push_back(det1);
+    cout << "Result: " << contr.obtenerIndice("Holis");
 }
 
 void testFunction(){

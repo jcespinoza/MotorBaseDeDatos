@@ -7,7 +7,7 @@
 class DefTabla
 {
 public:
-    DefTabla();
+    DefTabla(){}
     //int nCampos; GUARDAR EN ARCHIVO
     int nRegistros;
     int bloqDatos;
@@ -15,6 +15,10 @@ public:
     static int const TAM_NOMBRES = 50;
     char nombre[TAM_NOMBRES];
     std::list<DefCampo> defCampos;
+
+    int conteoCampos(){
+        return defCampos.size();
+    }
 
     int totalTamanio(){
         int nReg = defCampos.size();
