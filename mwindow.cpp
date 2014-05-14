@@ -8,7 +8,7 @@ MWindow::MWindow(QWidget *parent) :
     ui(new Ui::MWindow)
 {
     ui->setupUi(this);
-    ui->stackedWidget->setCurrentWidget(ui->pgBienvenida);
+    mostrarBienvenida();
 }
 
 int MWindow::obtenerPestania()
@@ -24,20 +24,20 @@ MWindow::~MWindow()
 void MWindow::on_pbNuevaTabla_clicked()
 {
     //llama a la pantalla para ingresar datos de una nueva tabla
-    ui->stackedWidget->setCurrentWidget(ui->pgNuevaTabla);
+    mostrarNuevaTabla();
 }
 
 void MWindow::on_pbAbrirTabla_clicked()
 {
     //llama a la pantalla para modificar registros de una tabla
 
-    ui->stackedWidget->setCurrentWidget(ui->pgAdicionRegistros);
+    mostrarAbrirTabla();
 }
 
 void MWindow::on_pbCrearTabla_clicked()
 {
     //llama a la pantalla para crear los campos de la taba
-    ui->stackedWidget->setCurrentWidget(ui->pgAdicionCampos);
+    mostrarCampos(ui->lwTablas->currentItem()->text());
 }
 
 void MWindow::on_actionCerrar_Pesta_a_triggered()
@@ -45,7 +45,7 @@ void MWindow::on_actionCerrar_Pesta_a_triggered()
     //Preguntar si ya termino y desea guardar los cambios
     int respuesta = QMessageBox::question(this, "Guardar Cambios", "Ha modificado datos, desea guardarlos?");
     if(respuesta == QMessageBox::No)
-        ui->stackedWidget->setCurrentWidget(ui->pgBienvenida);
+        mostrarBienvenida();
     //sino verificar en que pagina esta
 }
 
@@ -55,19 +55,68 @@ void MWindow::on_pbGuardarDefinicionTabla_clicked()
     //Ofrecer mostrar vista de datos
     int respuesta = QMessageBox::question(this, "Guardar Cambios", "Desea agregar datos a la tabla ahora mismo?", QMessageBox::Yes, QMessageBox::No,QMessageBox::Cancel);
     if(respuesta == QMessageBox::No){
-        ui->stackedWidget->setCurrentWidget(ui->pgBienvenida);
+        mostrarBienvenida();
     }else if(respuesta == QMessageBox::Yes){
-        ui->stackedWidget->setCurrentWidget(ui->pgAdicionRegistros);
+        mostrarAgregarRegistros(ui->lwTablas->currentItem()->text());
     }
     //de otra forma, cancelar la accion
 }
 
 void MWindow::on_pbGuardarRegistros_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->pgBienvenida);
+    mostrarBienvenida();
 }
 
 void MWindow::on_pbDescartarRegistros_clicked()
 {
+    mostrarBienvenida();
+}
+
+void MWindow::mostrarBienvenida()
+{
     ui->stackedWidget->setCurrentWidget(ui->pgBienvenida);
+    limpiarTodo();
+}
+
+void MWindow::mostrarAgregarRegistros(QString nombreTabla)
+{
+    ui->stackedWidget->setCurrentWidget(ui->pgAdicionRegistros);
+    ui->lbNombreTablaRegistros->setText(nombreTabla);
+}
+
+void MWindow::mostrarAbrirTabla()
+{
+    ui->stackedWidget->setCurrentWidget(ui->pgElegirTabla);
+}
+
+void MWindow::mostrarNuevaTabla()
+{
+    ui->stackedWidget->setCurrentWidget(ui->pgNuevaTabla);
+}
+
+void MWindow::mostrarCampos(QString nombreTabla)
+{
+    //ui->stackedWidget->setCurrentWidget(ui->pgAdicionCampos);
+    //ui->lbNombreTablaCampos->setText(nombreTabla);
+}
+
+void MWindow::limpiarTodo()
+{
+    ui->lbNombreTablaCampos->setText("");
+    ui->cboTipoCampo->setCurrentIndex(0);
+    ui->leLongitudCampo->clear();
+    ui->leNombreCampo->clear();
+    ui->twCampos->clear();
+
+    ui->leNombreTabla->clear();
+
+    ui->lbNombreTablaRegistros->clear();
+    ui->twDatosTabla->clear();
+}
+
+void MWindow::on_pbAbrirTablaElegida_clicked()
+{
+    limpiarTodo();
+    ui->stackedWidget->setCurrentWidget(ui->pgAdicionRegistros);
+    mostrarAgregarRegistros(ui->lwTablas->currentItem()->text());
 }

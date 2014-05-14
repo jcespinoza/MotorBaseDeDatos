@@ -4,6 +4,7 @@
 #include "deftabla.h"
 #include <string>
 #include "bloquemaestro.h"
+#include <cstdio>
 using namespace std;
 
 class Controlador

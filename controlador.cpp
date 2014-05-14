@@ -27,4 +27,11 @@ void Controlador::inicializarMaster()
 {
     //verificar si el archivo ya existia y si no estaba vacio
     //escribir uno nuevo o leer desde el de acuerdo a cada caso
+    FILE* dbFile = fopen("database.accdb", "rb");
+    if (dbFile){
+
+    }else{
+        //no existe, escribir en el primer bloque
+    }
+
 }
