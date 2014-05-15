@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
     w.show();
 
     return a.exec();
+
+    //testFunction();
 }
 
 void testControlador(){
@@ -60,33 +62,40 @@ void testFunction(){
     strcpy(det1.nombre,nom.c_str());
     det1.defCampos.push_back(def2);
 
-    int tsize = det1.totalTamanio();
-    char* tab = new char[tsize];
-    det1.aBytes(tab);
+    int tablaSize = det1.totalTamanio();
+    char* bufferW = new char[tablaSize];
+    det1.aBytes(bufferW);
 
-    FILE * tFile;
-    tFile = fopen ("prueba.sexy","wb");
-    if (tFile!=NULL)
+    FILE * wFile;
+    wFile = fopen ("prueba.accdb","wb");
+    if (wFile!=NULL)
     {
-        fwrite(tab,1, tsize,tFile);
-        fclose(tFile);
+        fwrite(bufferW,1, tablaSize,wFile);
+        fclose(wFile);
     }
 
     //Now read the file.
     FILE* rFile;
-    char* tread = new char[tsize];
-    rFile = fopen ("prueba.sexy","rb");
+    char* bufferR = new char[tablaSize];
+    rFile = fopen ("prueba.accdb","rb");
     if(rFile)
     {
-        long lsize = 0;
+        long fSize = 0;
         fseek(rFile,0,SEEK_END);
-        lsize = ftell(rFile);
+        fSize = ftell(rFile);
         rewind(rFile);
-        fread(tread, 1, tsize, rFile);
+        fread(bufferR, 1, tablaSize, rFile);
         fclose(rFile);
-        DefTabla rDef = DefTabla::desdeBytes(tread);
+        DefTabla rDef = DefTabla::desdeBytes(bufferR);
         //cout << (*DefCampo)(rDef.defCampos.begin()).Nombre;
         std::list<DefCampo>::iterator it = rDef.defCampos.begin();
         cout << ((*(++it))).Nombre;
+        for(int i = 0; i < tablaSize; i++){
+            cout << "Written[" << i << "]: " << bufferW[i] << "\n";
+        }
+
+        for(int i = 0; i < fSize; i++){
+            cout << "Read[" << i << "]: " << bufferR[i] << "\n";
+        }
     }
 }

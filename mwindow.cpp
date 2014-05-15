@@ -30,14 +30,13 @@ void MWindow::on_pbNuevaTabla_clicked()
 void MWindow::on_pbAbrirTabla_clicked()
 {
     //llama a la pantalla para modificar registros de una tabla
-
     mostrarAbrirTabla();
 }
 
 void MWindow::on_pbCrearTabla_clicked()
 {
     //llama a la pantalla para crear los campos de la taba
-    mostrarCampos(ui->lwTablas->currentItem()->text());
+    mostrarCampos(ui->leNombreTabla->text());
 }
 
 void MWindow::on_actionCerrar_Pesta_a_triggered()
@@ -91,13 +90,14 @@ void MWindow::mostrarAbrirTabla()
 
 void MWindow::mostrarNuevaTabla()
 {
+
     ui->stackedWidget->setCurrentWidget(ui->pgNuevaTabla);
 }
 
 void MWindow::mostrarCampos(QString nombreTabla)
 {
-    //ui->stackedWidget->setCurrentWidget(ui->pgAdicionCampos);
-    //ui->lbNombreTablaCampos->setText(nombreTabla);
+    ui->stackedWidget->setCurrentWidget(ui->pgAdicionCampos);
+    ui->lbNombreTablaCampos->setText(nombreTabla);
 }
 
 void MWindow::limpiarTodo()
@@ -106,7 +106,7 @@ void MWindow::limpiarTodo()
     ui->cboTipoCampo->setCurrentIndex(0);
     ui->leLongitudCampo->clear();
     ui->leNombreCampo->clear();
-    ui->twCampos->clear();
+    ui->twCampos->clearContents();
 
     ui->leNombreTabla->clear();
 
@@ -117,6 +117,10 @@ void MWindow::limpiarTodo()
 void MWindow::on_pbAbrirTablaElegida_clicked()
 {
     limpiarTodo();
+    if(ui->lwTablas->count() == 0){
+        mostrarBienvenida();
+        return;
+    }
     ui->stackedWidget->setCurrentWidget(ui->pgAdicionRegistros);
     mostrarAgregarRegistros(ui->lwTablas->currentItem()->text());
 }

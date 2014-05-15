@@ -25,7 +25,6 @@ private slots:
     void on_pbGuardarDefinicionTabla_clicked();
     void on_pbGuardarRegistros_clicked();
     void on_pbDescartarRegistros_clicked();
-
     void on_pbAbrirTablaElegida_clicked();
 
 private:
@@ -36,6 +35,10 @@ private:
     void mostrarNuevaTabla();
     void mostrarCampos(QString nombreTabla);
     void limpiarTodo();
+
+    list<DefCampo> temp_defCampos;
+    list<DefTabla> temp_defTablas;
+    QString currentName;
 };
 
 #endif // MWINDOW_H
