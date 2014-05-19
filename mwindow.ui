@@ -29,7 +29,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="pgBienvenida">
      <widget class="QLabel" name="label_4">
@@ -222,6 +222,18 @@
         <height>371</height>
        </rect>
       </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+      <property name="columnCount">
+       <number>3</number>
+      </property>
       <column>
        <property name="text">
         <string>Tipo</string>
@@ -301,6 +313,9 @@
       </item>
      </widget>
      <widget class="QLineEdit" name="leLongitudCampo">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -308,6 +323,9 @@
         <width>113</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="text">
+       <string>4</string>
       </property>
       <property name="maxLength">
        <number>128</number>
@@ -336,7 +354,7 @@
        </rect>
       </property>
       <property name="maxLength">
-       <number>50</number>
+       <number>49</number>
       </property>
      </widget>
      <widget class="QPushButton" name="pbGuardarDefinicionTabla">
@@ -474,6 +492,24 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>pbNuevaTabla</tabstop>
+  <tabstop>pbAbrirTabla</tabstop>
+  <tabstop>leNombreTabla</tabstop>
+  <tabstop>pbCrearTabla</tabstop>
+  <tabstop>lwTablas</tabstop>
+  <tabstop>pbAbrirTablaElegida</tabstop>
+  <tabstop>cboTipoCampo</tabstop>
+  <tabstop>leLongitudCampo</tabstop>
+  <tabstop>leNombreCampo</tabstop>
+  <tabstop>pbAgregarCampo</tabstop>
+  <tabstop>pbGuardarDefinicionTabla</tabstop>
+  <tabstop>twCampos</tabstop>
+  <tabstop>pbAgregarFila</tabstop>
+  <tabstop>pbGuardarRegistros</tabstop>
+  <tabstop>pbDescartarRegistros</tabstop>
+  <tabstop>twDatosTabla</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

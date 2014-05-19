@@ -4,7 +4,11 @@
 #include "deftabla.h"
 #include <string>
 #include "bloquemaestro.h"
+#include "bloqueestandar.h"
+#include "bloquemdcampos.h"
+#include "bloquemdtablas.h"
 #include <cstdio>
+
 using namespace std;
 
 class Controlador

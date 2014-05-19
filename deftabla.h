@@ -8,11 +8,16 @@ class DefTabla
 {
 public:
     DefTabla(){}
+
+    static int const TAM_CAMPOS = 58;
+    static int const TAM_NOMBRES = 50;
+
     //int nCampos; GUARDAR EN ARCHIVO
     int nRegistros;
     int bloqDatos;
-    static int const TAM_CAMPOS = 58;
-    static int const TAM_NOMBRES = 50;
+    int bloqCampos;
+    int dirBloqueCampos;
+
     char nombre[TAM_NOMBRES];
     std::list<DefCampo> defCampos;
 
@@ -24,6 +29,20 @@ public:
         int nReg = defCampos.size();
         int ret = nReg*TAM_CAMPOS + 3*sizeof(int)+sizeof(nombre);
         return ret;
+    }
+
+    int tamanio(){
+        return 5*sizeof(int)+TAM_NOMBRES;
+    }
+
+    void metaToBytes(char* dest){
+        int elems = defCampos.size();
+        memcpy(&dest[0],&elems,4);
+        memcpy(&dest[4], &nRegistros, 4);
+        memcpy(&dest[8], &bloqDatos, 4);
+        memcpy(&dest[12], &bloqCampos, 4);
+        memcpy(&dest[16], &dirBloqueCampos, 4);
+        memcpy(&dest[24], nombre,TAM_NOMBRES);
     }
 
     void aBytes(char *dest){
@@ -60,6 +79,12 @@ public:
             a += TAM_CAMPOS;
         }
         return resT;
+    }
+
+    //Create metaFromBytes
+
+    void setNombre(std::string str){
+        strcpy(this->nombre,str.c_str());
     }
 };
 

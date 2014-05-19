@@ -9,6 +9,7 @@ MWindow::MWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     mostrarBienvenida();
+    control.inicializarMaster();
 }
 
 int MWindow::obtenerPestania()
@@ -56,7 +57,12 @@ void MWindow::on_pbGuardarDefinicionTabla_clicked()
     if(respuesta == QMessageBox::No){
         mostrarBienvenida();
     }else if(respuesta == QMessageBox::Yes){
-        mostrarAgregarRegistros(ui->lwTablas->currentItem()->text());
+        mostrarAgregarRegistros(QString(temp_Tabla.nombre));
+    }
+    if(respuesta != QMessageBox::Cancel){
+        //temp_Tabla.defCampos.insert(temp_Tabla.defCampos.begin(), temp_defCampos.begin(), temp_defCampos.end());
+        char* array = new char[temp_Tabla.totalTamanio()];
+        temp_Tabla.aBytes(array);
     }
     //de otra forma, cancelar la accion
 }
@@ -96,15 +102,21 @@ void MWindow::mostrarNuevaTabla()
 
 void MWindow::mostrarCampos(QString nombreTabla)
 {
+    if(nombreTabla.isEmpty()){
+        QMessageBox::warning(this, "Error", "Debe elegir un nombre para la tabla");
+        return;
+    }
+    //verfiicar que la tabla no existe primer
     ui->stackedWidget->setCurrentWidget(ui->pgAdicionCampos);
     ui->lbNombreTablaCampos->setText(nombreTabla);
+    temp_Tabla.setNombre(nombreTabla.toStdString());
 }
 
 void MWindow::limpiarTodo()
 {
     ui->lbNombreTablaCampos->setText("");
     ui->cboTipoCampo->setCurrentIndex(0);
-    ui->leLongitudCampo->clear();
+    ui->leLongitudCampo->setText("4");
     ui->leNombreCampo->clear();
     ui->twCampos->clearContents();
 
@@ -123,4 +135,39 @@ void MWindow::on_pbAbrirTablaElegida_clicked()
     }
     ui->stackedWidget->setCurrentWidget(ui->pgAdicionRegistros);
     mostrarAgregarRegistros(ui->lwTablas->currentItem()->text());
+}
+
+void MWindow::on_pbAgregarCampo_clicked()
+{
+    //Validar informacion primero.
+    bool correct = true;
+    int longitud = ui->leLongitudCampo->text().toInt(&correct);
+    if(!correct){
+        QMessageBox::warning(this, "Error", "La longitud del campo es invalida.");
+        return;
+    }
+    string nombre = ui->leNombreCampo->text().toStdString();
+
+    DefCampo newOne;
+    newOne.Longitud = longitud;
+    newOne.setNombre(nombre);
+    newOne.Tipo = ui->cboTipoCampo->currentIndex();
+
+    //si todo esta bien agregar a la lista
+    temp_Tabla.defCampos.push_back(newOne);
+    int row = ui->twCampos->rowCount();
+    ui->twCampos->insertRow(row);
+    ui->twCampos->setItem(row,0, new QTableWidgetItem(ui->cboTipoCampo->currentText()));
+    ui->twCampos->setItem(row,1,new QTableWidgetItem(ui->leLongitudCampo->text()));
+    ui->twCampos->setItem(row,2, new QTableWidgetItem(ui->leNombreCampo->text()));
+}
+
+void MWindow::on_cboTipoCampo_currentIndexChanged(int index)
+{
+    //1 stands for String
+    if(index == 0){
+        ui->leLongitudCampo->setText("4");
+        ui->leLongitudCampo->setEnabled(false);
+    }else
+        ui->leLongitudCampo->setEnabled(true);
 }

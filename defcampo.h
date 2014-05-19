@@ -2,6 +2,7 @@
 #define CAMPO_H
 #include <cstdio>
 #include <cstring>
+#include <string>
 #include <iostream>
 
 class DefCampo
@@ -25,6 +26,10 @@ public:
         memcpy(&(res.Longitud),&(fuente[4]), 4);
         memcpy(res.Nombre,&(fuente[8]), 50);
         return res;
+    }
+
+    void setNombre(std::string str){
+        strcpy(this->Nombre,str.c_str());
     }
 };
 

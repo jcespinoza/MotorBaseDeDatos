@@ -27,6 +27,10 @@ private slots:
     void on_pbDescartarRegistros_clicked();
     void on_pbAbrirTablaElegida_clicked();
 
+    void on_pbAgregarCampo_clicked();
+
+    void on_cboTipoCampo_currentIndexChanged(int index);
+
 private:
     Ui::MWindow *ui;
     void mostrarBienvenida();
@@ -38,7 +42,9 @@ private:
 
     list<DefCampo> temp_defCampos;
     list<DefTabla> temp_defTablas;
+    DefTabla temp_Tabla;
     QString currentName;
+    Controlador control;
 };
 
 #endif // MWINDOW_H

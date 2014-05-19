@@ -17,13 +17,17 @@ SOURCES += main.cpp\
         defcampo.cpp\
     controlador.cpp \
     bloquemaestro.cpp \
-    bloqueestandar.cpp
+    bloqueestandar.cpp \
+    bloquemdcampos.cpp \
+    bloquemdtablas.cpp
 
 HEADERS  += mwindow.h \
     defcampo.h \
     deftabla.h \
     controlador.h \
     bloquemaestro.h \
-    bloqueestandar.h
+    bloqueestandar.h \
+    bloquemdcampos.h \
+    bloquemdtablas.h
 
 FORMS    += mwindow.ui
