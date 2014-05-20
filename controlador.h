@@ -15,9 +15,9 @@ class Controlador
 {
 public:
     Controlador();
-    list<DefTabla> tablas;
+    std::string nomArchivo;
     int obtenerIndice(string);
-    int agregarTabla(string);
+    int agregarTabla(DefTabla);
     void inicializarMaster();
     BloqueMaestro master;
 };

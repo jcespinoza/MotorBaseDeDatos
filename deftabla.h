@@ -11,6 +11,7 @@ public:
 
     static int const TAM_CAMPOS = 58;
     static int const TAM_NOMBRES = 50;
+    static int const TAM_TABLAS = 70;
 
     //int nCampos; GUARDAR EN ARCHIVO
     int nRegistros;

@@ -63,6 +63,7 @@ void MWindow::on_pbGuardarDefinicionTabla_clicked()
         //temp_Tabla.defCampos.insert(temp_Tabla.defCampos.begin(), temp_defCampos.begin(), temp_defCampos.end());
         char* array = new char[temp_Tabla.totalTamanio()];
         temp_Tabla.aBytes(array);
+        control.agregarTabla(temp_Tabla);
     }
     //de otra forma, cancelar la accion
 }
