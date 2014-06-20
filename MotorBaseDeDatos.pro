@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     bloquemaestro.cpp \
     bloqueestandar.cpp \
     bloquemdcampos.cpp \
-    bloquemdtablas.cpp
+    bloquemdtablas.cpp \
+    masterblock.cpp
 
 HEADERS  += mwindow.h \
     defcampo.h \
@@ -28,6 +29,7 @@ HEADERS  += mwindow.h \
     bloquemaestro.h \
     bloqueestandar.h \
     bloquemdcampos.h \
-    bloquemdtablas.h
+    bloquemdtablas.h \
+    masterblock.h
 
 FORMS    += mwindow.ui
